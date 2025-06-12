@@ -12,4 +12,4 @@ ENV NODE_ENV=production
 COPY --from=builder /app .
 EXPOSE 8080
 ENV PORT=8080
-CMD ["sh", "-c", "pnpm start"]
+CMD ["pnpm", "start"]
