@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Probar build y ejecución local de Next.js en Docker",
+			"command": "docker build -t agent-ui-test . && docker run -e PORT=8080 -p 8080:8080 agent-ui-test",
+			"group": "build"
+		}
+	]
+}
