@@ -8,8 +8,9 @@ RUN pnpm build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
-ENV NODE_ENV=production
-COPY --from=builder /app .
+RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN pnpm install -g serve
+COPY --from=builder /app/out ./out
 EXPOSE 8080
 ENV PORT=8080
-CMD ["pnpm", "start"]
+CMD ["serve", "-s", "out", "-l", "8080"]
